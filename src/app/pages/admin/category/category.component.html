@@ -1,1 +1,60 @@
-<p>category works!</p>
+<div class="row">
+    <div class="col-8">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Sr.No</th>
+                    <th>Category Name</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                <!-- <tr *ngFor="let item of product$ | async; let index=index">
+                    <td>{{index+1}}</td>
+                    <td>{{item.categoryName}}</td>
+                    <td>
+                        <button class="btn btn-primary mx-2">Edit</button>
+                        <button class="btn btn-danger mx-2">Delete</button>
+                    </td>
+                </tr> -->
+
+                <tr *ngFor="let item of categoryList ; let index=index">
+                    <td>{{index+1}}</td>
+                    <td>{{item.categoryName}}</td>
+                    <td>
+                        <button class="btn btn-primary mx-2" (click)="onEdit(item)">Edit</button>
+                        <button class="btn btn-danger mx-2" (click)="onDelete(item)">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="col-4">
+        <div class="card">
+            <div class="card-header">
+                New Category
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-12">
+
+                        <label for="" class="form-label">category</label>
+                        <input type="text" class="form-control" [(ngModel)]="categoryObj.categoryName"
+                            placeholder="Enter category name">
+                    </div>
+                    <div class="col-12 text-center mt-4">
+                        <button class="btn btn-danger mx-2" (click)="onReset()">Reset</button>
+                        @if(categoryObj.CategoryId==0){
+                        <button class="btn btn-primary mx-2" (click)="onSave()">create category</button>
+                        }
+                        @else {
+                        <button class="btn btn-warning mx-2">Update category</button>
+                        }
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
