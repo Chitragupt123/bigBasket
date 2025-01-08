@@ -13,18 +13,19 @@ export const routes: Routes = [
         redirectTo:'shop/allproduct',
         pathMatch:'full'
     },
+    
     {
-        path:'productCategory/:id',
-        component:CategoryProductsComponent
-    },
-    {
-        path:'shop',
+        path:'',
         component:LandingComponent,
         children:[
            
             {
                 path:'allproduct',
                 component:ProductComponent
+            },
+            {
+                path:'productCategory/:id',
+                component:CategoryProductsComponent
             },
         ]
     },

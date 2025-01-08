@@ -21,4 +21,22 @@ export class ProductComponent implements OnInit{
   this.productList=res.data;
     })
   }
+  addToCart(productId:number){
+  const cartObj={
+      "CartId": 0,
+      "CustId": 379,
+      "ProductId": productId,
+      "Quantity": 1,
+      "AddedDate": new Date(),
+    }
+    this.productSrv.saveCart(cartObj).subscribe((res:any)=>{
+if(res.result){
+  alert('products added to cart')
+  this.productSrv.cartUpdated$?.next(true);
+}
+else{
+  alert(res.message)
+}
+    })
+  }
 }
